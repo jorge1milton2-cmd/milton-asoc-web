@@ -1,0 +1,625 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Milton & Asociados S.C. | Plantillas Excel, Automatizaciones y Archivos XML</title>
+  <meta name="description" content="Descarga plantillas Excel profesionales, automatizaciones con macros VBA y archivos XML para facturación. Milton & Asociados S.C. — Optimiza tu negocio hoy." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    /* ===== VARIABLES ===== */
+    :root {
+      --color-primary: #00c8e0;
+      --color-primary-dim: #00c8e040;
+      --color-accent: #0080ff;
+      --color-dark: #060e1a;
+      --color-dark-2: #0d1b2a;
+      --color-dark-3: #0f2540;
+      --color-card: #0d1f38;
+      --color-border: #1a3a5c;
+      --color-text: #e8f4f8;
+      --color-muted: #7a9bb8;
+      --font: 'Space Grotesk', sans-serif;
+      --radius: 12px;
+      --transition: all 0.25s ease;
+    }
+
+    /* ===== RESET ===== */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: var(--font);
+      background: var(--color-dark);
+      color: var(--color-text);
+      font-size: 16px;
+      line-height: 1.6;
+    }
+    a { color: var(--color-primary); text-decoration: none; transition: var(--transition); }
+    img { max-width: 100%; height: auto; display: block; }
+
+    /* ===== HEADER ===== */
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(6, 14, 26, 0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--color-border);
+    }
+    .header-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 24px;
+      height: 70px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+    .site-logo img { height: 48px; width: auto; }
+    .site-nav { display: flex; align-items: center; gap: 8px; }
+    .site-nav a {
+      color: var(--color-text);
+      font-weight: 500;
+      font-size: 15px;
+      padding: 8px 14px;
+      border-radius: 8px;
+    }
+    .site-nav a:hover { color: var(--color-primary); background: var(--color-primary-dim); }
+    .btn-nav {
+      background: var(--color-primary);
+      color: var(--color-dark) !important;
+      font-weight: 700 !important;
+      padding: 9px 20px !important;
+      border-radius: 8px !important;
+    }
+    .btn-nav:hover { background: #00e5ff !important; color: var(--color-dark) !important; }
+    .menu-toggle { display: none; background: none; border: none; cursor: pointer; padding: 8px; }
+    .menu-toggle span {
+      display: block; width: 24px; height: 2px;
+      background: var(--color-text); margin: 5px 0;
+      transition: var(--transition);
+    }
+
+    /* ===== BUTTONS ===== */
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--color-primary);
+      color: var(--color-dark);
+      font-weight: 700;
+      font-size: 16px;
+      padding: 14px 32px;
+      border-radius: var(--radius);
+      transition: var(--transition);
+    }
+    .btn-primary:hover { background: #00e5ff; transform: translateY(-2px); box-shadow: 0 8px 24px #00c8e040; }
+    .btn-secondary {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: transparent;
+      color: var(--color-text);
+      font-weight: 600;
+      font-size: 16px;
+      padding: 13px 32px;
+      border-radius: var(--radius);
+      border: 1px solid var(--color-border);
+      transition: var(--transition);
+    }
+    .btn-secondary:hover { border-color: var(--color-primary); color: var(--color-primary); transform: translateY(-2px); }
+
+    /* ===== HERO ===== */
+    <!-- SCROLL-VIDEO-SECTION -->
+    .hero {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      overflow: hidden;
+      padding: 100px 24px;
+    }
+    .hero-bg {
+      position: absolute; inset: 0;
+      background:
+        radial-gradient(ellipse 80% 60% at 50% 0%, #00c8e020 0%, transparent 70%),
+        radial-gradient(ellipse 60% 40% at 80% 80%, #0080ff18 0%, transparent 60%),
+        linear-gradient(180deg, #060e1a 0%, #0a1628 50%, #060e1a 100%);
+    }
+    /* Grid animado de fondo */
+    .hero-grid {
+      position: absolute; inset: 0;
+      background-image:
+        linear-gradient(rgba(0,200,224,0.05) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0,200,224,0.05) 1px, transparent 1px);
+      background-size: 60px 60px;
+      animation: gridMove 20s linear infinite;
+    }
+    @keyframes gridMove {
+      0% { transform: translateY(0); }
+      100% { transform: translateY(60px); }
+    }
+    .hero-glow {
+      position: absolute;
+      width: 600px; height: 600px;
+      border-radius: 50%;
+      background: radial-gradient(circle, #00c8e015 0%, transparent 70%);
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      animation: pulse 4s ease-in-out infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { transform: translate(-50%, -50%) scale(1); opacity: 0.5; }
+      50% { transform: translate(-50%, -50%) scale(1.1); opacity: 1; }
+    }
+    .hero-content { position: relative; z-index: 2; max-width: 800px; }
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--color-primary-dim);
+      border: 1px solid var(--color-primary);
+      color: var(--color-primary);
+      font-size: 13px;
+      font-weight: 600;
+      padding: 6px 16px;
+      border-radius: 100px;
+      margin-bottom: 28px;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+    .hero h1 {
+      font-size: clamp(36px, 6vw, 68px);
+      font-weight: 700;
+      line-height: 1.1;
+      margin-bottom: 24px;
+      letter-spacing: -0.02em;
+    }
+    .hero h1 span { color: var(--color-primary); }
+    .hero-subtitle {
+      font-size: clamp(16px, 2.5vw, 20px);
+      color: var(--color-muted);
+      max-width: 600px;
+      margin: 0 auto 40px;
+    }
+    .hero-ctas { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+    .hero-scroll {
+      position: absolute;
+      bottom: 32px; left: 50%;
+      transform: translateX(-50%);
+      display: flex; flex-direction: column;
+      align-items: center; gap: 8px;
+      color: var(--color-muted);
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      animation: bounce 2s ease-in-out infinite;
+    }
+    .hero-scroll::after {
+      content: '';
+      width: 1px; height: 40px;
+      background: linear-gradient(var(--color-primary), transparent);
+    }
+    @keyframes bounce {
+      0%, 100% { transform: translateX(-50%) translateY(0); }
+      50% { transform: translateX(-50%) translateY(6px); }
+    }
+
+    /* ===== SECCIONES GENERALES ===== */
+    section { padding: 100px 24px; }
+    .container { max-width: 1100px; margin: 0 auto; }
+    .section-label {
+      display: inline-block;
+      color: var(--color-primary);
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+    .section-title {
+      font-size: clamp(28px, 4vw, 44px);
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      line-height: 1.2;
+      margin-bottom: 16px;
+    }
+    .section-subtitle {
+      font-size: 18px;
+      color: var(--color-muted);
+      max-width: 600px;
+      margin-bottom: 64px;
+    }
+    .section-header { text-align: center; }
+    .section-header .section-subtitle { margin-left: auto; margin-right: auto; }
+
+    /* ===== POR QUÉ ELEGIRNOS ===== */
+    .features { background: var(--color-dark-2); }
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 32px;
+      margin-top: 64px;
+    }
+    .feature-card {
+      background: var(--color-card);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius);
+      padding: 32px 28px;
+      transition: var(--transition);
+      position: relative;
+      overflow: hidden;
+    }
+    .feature-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, var(--color-primary), transparent);
+      opacity: 0;
+      transition: var(--transition);
+    }
+    .feature-card:hover { border-color: var(--color-primary); transform: translateY(-4px); }
+    .feature-card:hover::before { opacity: 1; }
+    .feature-icon {
+      font-size: 36px;
+      margin-bottom: 16px;
+      display: block;
+    }
+    .feature-card h3 {
+      font-size: 18px;
+      font-weight: 600;
+      margin-bottom: 10px;
+      color: var(--color-text);
+    }
+    .feature-card p { color: var(--color-muted); font-size: 15px; }
+
+    /* ===== SERVICIOS ===== */
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 24px;
+      margin-top: 64px;
+    }
+    .service-card {
+      background: var(--color-card);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius);
+      padding: 36px 32px;
+      transition: var(--transition);
+      cursor: pointer;
+    }
+    .service-card:hover { border-color: var(--color-primary); transform: translateY(-6px); box-shadow: 0 16px 40px #00c8e015; }
+    .service-icon {
+      width: 56px; height: 56px;
+      background: var(--color-primary-dim);
+      border: 1px solid var(--color-primary);
+      border-radius: 12px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 26px;
+      margin-bottom: 20px;
+    }
+    .service-card h3 {
+      font-size: 20px;
+      font-weight: 600;
+      margin-bottom: 12px;
+      color: var(--color-text);
+    }
+    .service-card p { color: var(--color-muted); font-size: 15px; line-height: 1.7; margin-bottom: 20px; }
+    .service-link {
+      color: var(--color-primary);
+      font-weight: 600;
+      font-size: 14px;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .service-link::after { content: '→'; transition: var(--transition); }
+    .service-card:hover .service-link::after { transform: translateX(4px); }
+
+    /* ===== NÚMEROS ===== */
+    .stats { background: var(--color-dark-2); }
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 32px;
+      margin-top: 64px;
+    }
+    .stat-item { text-align: center; }
+    .stat-number {
+      font-size: clamp(40px, 6vw, 64px);
+      font-weight: 700;
+      color: var(--color-primary);
+      line-height: 1;
+      margin-bottom: 8px;
+      letter-spacing: -0.02em;
+    }
+    .stat-label { color: var(--color-muted); font-size: 15px; font-weight: 500; }
+
+    /* ===== CTA FINAL ===== */
+    .cta-section {
+      background: linear-gradient(135deg, var(--color-dark-3) 0%, var(--color-dark-2) 100%);
+      border-top: 1px solid var(--color-border);
+      border-bottom: 1px solid var(--color-border);
+      text-align: center;
+    }
+    .cta-section .section-title { margin-bottom: 16px; }
+    .cta-section p { color: var(--color-muted); font-size: 18px; margin-bottom: 40px; }
+    .cta-ctas { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+
+    /* ===== FOOTER ===== */
+    .site-footer {
+      background: var(--color-dark-2);
+      border-top: 1px solid var(--color-border);
+      padding: 60px 24px 32px;
+    }
+    .footer-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 40px;
+    }
+    .footer-brand img { height: 48px; margin-bottom: 16px; }
+    .footer-brand p { color: var(--color-muted); font-size: 14px; line-height: 1.7; }
+    .footer-col h4 {
+      color: var(--color-text);
+      font-size: 14px;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      margin-bottom: 16px;
+    }
+    .footer-col ul { list-style: none; }
+    .footer-col ul li { margin-bottom: 10px; }
+    .footer-col ul li a { color: var(--color-muted); font-size: 14px; }
+    .footer-col ul li a:hover { color: var(--color-primary); }
+    .footer-bottom {
+      max-width: 1100px;
+      margin: 40px auto 0;
+      padding-top: 24px;
+      border-top: 1px solid var(--color-border);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .footer-bottom p { color: var(--color-muted); font-size: 13px; }
+    .footer-bottom a { color: var(--color-muted); }
+    .footer-bottom a:hover { color: var(--color-primary); }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 768px) {
+      .menu-toggle { display: block; }
+      .site-nav { display: none; flex-direction: column; position: absolute; top: 70px; left: 0; right: 0; background: var(--color-dark); padding: 20px 24px; border-bottom: 1px solid var(--color-border); gap: 4px; }
+      .site-nav.open { display: flex; }
+      .hero-ctas { flex-direction: column; align-items: center; }
+      .footer-inner { grid-template-columns: 1fr 1fr; }
+      .footer-brand { grid-column: 1 / -1; }
+      section { padding: 64px 20px; }
+    }
+    @media (max-width: 480px) {
+      .footer-inner { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header class="site-header">
+    <div class="header-inner">
+      <div class="site-logo">
+        <a href="index.html">
+          <img src="assets/logo.jpeg" alt="Milton & Asociados S.C. - Logo" />
+        </a>
+      </div>
+      <button class="menu-toggle" id="menuToggle" aria-label="Menú">
+        <span></span><span></span><span></span>
+      </button>
+      <nav class="site-nav" id="siteNav">
+        <a href="index.html">Inicio</a>
+        <a href="servicios.html">Servicios</a>
+        <a href="nosotros.html">Nosotros</a>
+        <a href="contacto.html">Contacto</a>
+        <a href="servicios.html" class="btn-nav">Descargar Plantillas</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero" id="scroll-hero">
+    <div class="hero-bg"></div>
+    <div class="hero-grid"></div>
+    <div class="hero-glow"></div>
+    <div class="hero-content">
+      <div class="hero-badge">✦ Milton & Asociados S.C.</div>
+      <h1>Automatiza tu negocio<br />con <span>Excel & XML</span></h1>
+      <p class="hero-subtitle">
+        Plantillas profesionales, macros VBA y archivos XML para facturación electrónica.
+        Optimiza procesos, ahorra tiempo y lleva tu empresa al siguiente nivel.
+      </p>
+      <div class="hero-ctas">
+        <a href="servicios.html" class="btn-primary">⚡ Ver Plantillas y Automatizaciones</a>
+        <a href="contacto.html" class="btn-secondary">Hablar con un Experto</a>
+      </div>
+    </div>
+    <div class="hero-scroll">Scroll</div>
+  </section>
+
+  <!-- POR QUÉ ELEGIRNOS -->
+  <section class="features">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-label">¿Por qué elegirnos?</span>
+        <h2 class="section-title">La diferencia Milton & Asociados</h2>
+        <p class="section-subtitle">Soluciones reales para negocios reales — sin complicaciones, listos para usar.</p>
+      </div>
+      <div class="features-grid">
+        <div class="feature-card">
+          <span class="feature-icon">🎯</span>
+          <h3>Listas para usar</h3>
+          <p>Todas nuestras plantillas están terminadas y documentadas. Las descargas y funciona desde el primer minuto.</p>
+        </div>
+        <div class="feature-card">
+          <span class="feature-icon">⚙️</span>
+          <h3>Automatización real</h3>
+          <p>Nuestras macros VBA eliminan tareas repetitivas y reducen errores humanos al mínimo.</p>
+        </div>
+        <div class="feature-card">
+          <span class="feature-icon">📄</span>
+          <h3>XML para facturación</h3>
+          <p>Archivos XML compatibles con los estándares fiscales vigentes. Genera, valida y envía sin complicaciones.</p>
+        </div>
+        <div class="feature-card">
+          <span class="feature-icon">🔒</span>
+          <h3>Compatibilidad total</h3>
+          <p>Compatible con Excel 2013, 2016, 2019, 2021 y Microsoft 365. Funciona en Windows y Mac.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICIOS PRINCIPALES -->
+  <section class="services">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-label">Nuestros servicios</span>
+        <h2 class="section-title">Todo lo que necesita tu empresa</h2>
+        <p class="section-subtitle">Desde plantillas simples hasta automatizaciones complejas — tenemos la solución.</p>
+      </div>
+      <div class="services-grid">
+        <div class="service-card">
+          <div class="service-icon">📊</div>
+          <h3>Plantillas Excel Profesionales</h3>
+          <p>Control de inventarios, nóminas, presupuestos, flujo de caja, reportes de ventas y mucho más. Diseñadas con criterio profesional.</p>
+          <a href="servicios.html#plantillas" class="service-link">Ver plantillas</a>
+        </div>
+        <div class="service-card">
+          <div class="service-icon">🤖</div>
+          <h3>Automatizaciones con Macros VBA</h3>
+          <p>Elimina tareas manuales y repetitivas. Botones que procesan datos, generan reportes y envían correos automáticamente.</p>
+          <a href="servicios.html#macros" class="service-link">Ver automatizaciones</a>
+        </div>
+        <div class="service-card">
+          <div class="service-icon">🗂️</div>
+          <h3>Archivos XML para Facturación</h3>
+          <p>Genera y valida archivos XML para facturación electrónica. Compatible con los sistemas fiscales más utilizados.</p>
+          <a href="servicios.html#xml" class="service-link">Ver archivos XML</a>
+        </div>
+        <div class="service-card">
+          <div class="service-icon">📈</div>
+          <h3>Dashboards e Informes</h3>
+          <p>Convierte tus datos en visualizaciones claras con dashboards interactivos. Toma decisiones con información en tiempo real.</p>
+          <a href="servicios.html#dashboards" class="service-link">Ver dashboards</a>
+        </div>
+        <div class="service-card">
+          <div class="service-icon">🔗</div>
+          <h3>Integración y Conectividad</h3>
+          <p>Conecta Excel con bases de datos, APIs y sistemas externos. Automatiza la importación y exportación de datos.</p>
+          <a href="servicios.html#integracion" class="service-link">Ver integraciones</a>
+        </div>
+        <div class="service-card">
+          <div class="service-icon">🎓</div>
+          <h3>Consultoría Personalizada</h3>
+          <p>¿Tienes un proceso específico que automatizar? Diseñamos soluciones a medida para tu empresa.</p>
+          <a href="contacto.html" class="service-link">Solicitar consultoría</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- NÚMEROS DE CONFIANZA -->
+  <section class="stats">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-label">Nuestros números</span>
+        <h2 class="section-title">Resultados que hablan solos</h2>
+      </div>
+      <div class="stats-grid">
+        <div class="stat-item">
+          <div class="stat-number">+200</div>
+          <div class="stat-label">Plantillas y automatizaciones</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number">+500</div>
+          <div class="stat-label">Empresas beneficiadas</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number">+10</div>
+          <div class="stat-label">Años de experiencia</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number">100%</div>
+          <div class="stat-label">Compatibilidad Excel</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA FINAL -->
+  <section class="cta-section">
+    <div class="container">
+      <h2 class="section-title">¿Listo para automatizar tu negocio?</h2>
+      <p>Descarga nuestras plantillas o contáctanos para una solución personalizada.</p>
+      <div class="cta-ctas">
+        <a href="servicios.html" class="btn-primary">⚡ Ver todos los servicios</a>
+        <a href="contacto.html" class="btn-secondary">Contactar ahora</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <img src="assets/logo.jpeg" alt="Milton & Asociados S.C. - Logo" />
+        <p>Soluciones profesionales en Excel, macros VBA y archivos XML para optimizar los procesos de tu empresa.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Navegación</h4>
+        <ul>
+          <li><a href="index.html">Inicio</a></li>
+          <li><a href="servicios.html">Servicios</a></li>
+          <li><a href="nosotros.html">Nosotros</a></li>
+          <li><a href="contacto.html">Contacto</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Servicios</h4>
+        <ul>
+          <li><a href="servicios.html#plantillas">Plantillas Excel</a></li>
+          <li><a href="servicios.html#macros">Macros VBA</a></li>
+          <li><a href="servicios.html#xml">Archivos XML</a></li>
+          <li><a href="servicios.html#dashboards">Dashboards</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Contacto</h4>
+        <ul>
+          <li><a href="mailto:contacto@milton-asoc.tech">contacto@milton-asoc.tech</a></li>
+          <li><a href="contacto.html">Formulario de contacto</a></li>
+          <li><a href="https://milton-asoc.tech">milton-asoc.tech</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 Milton & Asociados S.C. — Todos los derechos reservados</p>
+      <p><a href="https://milton-asoc.tech">milton-asoc.tech</a></p>
+    </div>
+  </footer>
+
+  <script>
+    // Menú móvil
+    const toggle = document.getElementById('menuToggle');
+    const nav = document.getElementById('siteNav');
+    toggle.addEventListener('click', () => nav.classList.toggle('open'));
+  </script>
+</body>
+</html>

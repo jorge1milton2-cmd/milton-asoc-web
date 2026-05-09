@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contacto | Milton & Asociados S.C.</title>
+  <meta name="description" content="Contacta a Milton & Asociados S.C. para solicitar plantillas Excel, automatizaciones VBA o soluciones XML a medida. Respondemos en menos de 24 horas." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --color-primary: #00c8e0;
+      --color-primary-dim: #00c8e040;
+      --color-dark: #060e1a;
+      --color-dark-2: #0d1b2a;
+      --color-dark-3: #0f2540;
+      --color-card: #0d1f38;
+      --color-border: #1a3a5c;
+      --color-text: #e8f4f8;
+      --color-muted: #7a9bb8;
+      --font: 'Space Grotesk', sans-serif;
+      --radius: 12px;
+      --transition: all 0.25s ease;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: var(--font); background: var(--color-dark); color: var(--color-text); }
+    a { color: var(--color-primary); text-decoration: none; transition: var(--transition); }
+    img { max-width: 100%; height: auto; display: block; }
+
+    /* HEADER */
+    .site-header { position: sticky; top: 0; z-index: 100; background: rgba(6,14,26,0.92); backdrop-filter: blur(12px); border-bottom: 1px solid var(--color-border); }
+    .header-inner { max-width: 1100px; margin: 0 auto; padding: 0 24px; height: 70px; display: flex; align-items: center; justify-content: space-between; gap: 24px; }
+    .site-logo img { height: 48px; width: auto; }
+    .site-nav { display: flex; align-items: center; gap: 8px; }
+    .site-nav a { color: var(--color-text); font-weight: 500; font-size: 15px; padding: 8px 14px; border-radius: 8px; }
+    .site-nav a:hover, .site-nav a.active { color: var(--color-primary); background: var(--color-primary-dim); }
+    .btn-nav { background: var(--color-primary) !important; color: var(--color-dark) !important; font-weight: 700 !important; border-radius: 8px !important; }
+    .btn-nav:hover { background: #00e5ff !important; }
+    .menu-toggle { display: none; background: none; border: none; cursor: pointer; padding: 8px; }
+    .menu-toggle span { display: block; width: 24px; height: 2px; background: var(--color-text); margin: 5px 0; }
+
+    /* PAGE HERO */
+    .page-hero { padding: 80px 24px 64px; text-align: center; background: linear-gradient(180deg, var(--color-dark-3) 0%, var(--color-dark) 100%); border-bottom: 1px solid var(--color-border); }
+    .breadcrumb { font-size: 13px; color: var(--color-muted); margin-bottom: 20px; }
+    .breadcrumb a { color: var(--color-muted); }
+    .breadcrumb a:hover { color: var(--color-primary); }
+    .page-hero h1 { font-size: clamp(32px, 5vw, 52px); font-weight: 700; letter-spacing: -0.02em; margin-bottom: 16px; }
+    .page-hero h1 span { color: var(--color-primary); }
+    .page-hero p { font-size: 18px; color: var(--color-muted); max-width: 500px; margin: 0 auto; }
+
+    /* CONTACTO LAYOUT */
+    .contact-section { padding: 80px 24px; }
+    .contact-inner { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1.6fr; gap: 64px; align-items: start; }
+
+    /* INFO CARDS */
+    .contact-info { display: flex; flex-direction: column; gap: 20px; }
+    .info-card { background: var(--color-card); border: 1px solid var(--color-border); border-radius: var(--radius); padding: 24px; display: flex; align-items: flex-start; gap: 16px; transition: var(--transition); }
+    .info-card:hover { border-color: var(--color-primary); }
+    .info-icon { width: 44px; height: 44px; background: var(--color-primary-dim); border: 1px solid var(--color-primary); border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 20px; flex-shrink: 0; }
+    .info-text h4 { font-size: 14px; font-weight: 600; color: var(--color-muted); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 4px; }
+    .info-text p, .info-text a { font-size: 15px; color: var(--color-text); font-weight: 500; }
+    .info-text a:hover { color: var(--color-primary); }
+    .response-badge { background: var(--color-dark-3); border: 1px solid var(--color-border); border-radius: var(--radius); padding: 20px 24px; display: flex; align-items: center; gap: 12px; margin-top: 8px; }
+    .response-badge .dot { width: 8px; height: 8px; border-radius: 50%; background: #22c55e; flex-shrink: 0; box-shadow: 0 0 8px #22c55e; animation: blink 2s ease-in-out infinite; }
+    @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0.4; } }
+    .response-badge p { font-size: 14px; color: var(--color-muted); }
+    .response-badge strong { color: var(--color-text); }
+
+    /* FORMULARIO */
+    .contact-form-wrap { background: var(--color-card); border: 1px solid var(--color-border); border-radius: 16px; padding: 40px; }
+    .contact-form-wrap h2 { font-size: 24px; font-weight: 700; margin-bottom: 8px; }
+    .contact-form-wrap .form-desc { color: var(--color-muted); font-size: 15px; margin-bottom: 32px; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .form-group { margin-bottom: 20px; }
+    .form-group label { display: block; font-size: 14px; font-weight: 500; color: var(--color-muted); margin-bottom: 8px; }
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      width: 100%;
+      background: var(--color-dark-2);
+      border: 1px solid var(--color-border);
+      border-radius: 10px;
+      color: var(--color-text);
+      font-family: var(--font);
+      font-size: 15px;
+      padding: 12px 16px;
+      transition: var(--transition);
+      outline: none;
+    }
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus { border-color: var(--color-primary); box-shadow: 0 0 0 3px var(--color-primary-dim); }
+    .form-group textarea { resize: vertical; min-height: 120px; }
+    .form-group select option { background: var(--color-dark-2); }
+    .form-group input::placeholder, .form-group textarea::placeholder { color: #3a5a7a; }
+    .btn-submit {
+      width: 100%;
+      background: var(--color-primary);
+      color: var(--color-dark);
+      font-family: var(--font);
+      font-size: 16px;
+      font-weight: 700;
+      padding: 16px 32px;
+      border: none;
+      border-radius: var(--radius);
+      cursor: pointer;
+      transition: var(--transition);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      margin-top: 8px;
+    }
+    .btn-submit:hover { background: #00e5ff; transform: translateY(-2px); box-shadow: 0 8px 24px #00c8e040; }
+    .form-note { font-size: 13px; color: var(--color-muted); text-align: center; margin-top: 16px; }
+
+    /* SERVICIOS RÁPIDOS */
+    .quick-services { padding: 0 24px 80px; }
+    .quick-inner { max-width: 1100px; margin: 0 auto; }
+    .quick-inner h2 { font-size: 28px; font-weight: 700; margin-bottom: 24px; text-align: center; }
+    .quick-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; }
+    .quick-card { background: var(--color-card); border: 1px solid var(--color-border); border-radius: var(--radius); padding: 20px; text-align: center; cursor: pointer; transition: var(--transition); }
+    .quick-card:hover { border-color: var(--color-primary); transform: translateY(-3px); }
+    .quick-card .q-icon { font-size: 32px; margin-bottom: 10px; display: block; }
+    .quick-card p { font-size: 14px; font-weight: 600; color: var(--color-text); }
+
+    /* FOOTER */
+    .site-footer { background: var(--color-dark-2); border-top: 1px solid var(--color-border); padding: 60px 24px 32px; }
+    .footer-inner { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 40px; }
+    .footer-brand img { height: 48px; margin-bottom: 16px; }
+    .footer-brand p { color: var(--color-muted); font-size: 14px; line-height: 1.7; }
+    .footer-col h4 { color: var(--color-text); font-size: 14px; font-weight: 600; letter-spacing: 0.05em; text-transform: uppercase; margin-bottom: 16px; }
+    .footer-col ul { list-style: none; }
+    .footer-col ul li { margin-bottom: 10px; }
+    .footer-col ul li a { color: var(--color-muted); font-size: 14px; }
+    .footer-col ul li a:hover { color: var(--color-primary); }
+    .footer-bottom { max-width: 1100px; margin: 40px auto 0; padding-top: 24px; border-top: 1px solid var(--color-border); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; }
+    .footer-bottom p { color: var(--color-muted); font-size: 13px; }
+
+    @media (max-width: 900px) {
+      .contact-inner { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 768px) {
+      .menu-toggle { display: block; }
+      .site-nav { display: none; flex-direction: column; position: absolute; top: 70px; left: 0; right: 0; background: var(--color-dark); padding: 20px 24px; border-bottom: 1px solid var(--color-border); gap: 4px; }
+      .site-nav.open { display: flex; }
+      .form-row { grid-template-columns: 1fr; }
+      .contact-form-wrap { padding: 28px 20px; }
+      .footer-inner { grid-template-columns: 1fr 1fr; }
+      .footer-brand { grid-column: 1 / -1; }
+    }
+    @media (max-width: 480px) { .footer-inner { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="header-inner">
+      <div class="site-logo"><a href="index.html"><img src="assets/logo.jpeg" alt="Milton & Asociados S.C." /></a></div>
+      <button class="menu-toggle" id="menuToggle" aria-label="Menú"><span></span><span></span><span></span></button>
+      <nav class="site-nav" id="siteNav">
+        <a href="index.html">Inicio</a>
+        <a href="servicios.html">Servicios</a>
+        <a href="nosotros.html">Nosotros</a>
+        <a href="contacto.html" class="active">Contacto</a>
+        <a href="servicios.html" class="btn-nav">Descargar Plantillas</a>
+      </nav>
+    </div>
+  </header>
+
+  <div class="page-hero">
+    <div class="breadcrumb"><a href="index.html">Inicio</a> / Contacto</div>
+    <h1>Hablemos de tu <span>proyecto</span></h1>
+    <p>¿Necesitas una solución personalizada? Cuéntanos y te respondemos en menos de 24 horas.</p>
+  </div>
+
+  <!-- SELECTOR RÁPIDO -->
+  <div class="quick-services">
+    <div class="quick-inner">
+      <h2>¿Qué necesitas?</h2>
+      <div class="quick-grid">
+        <div class="quick-card" onclick="setServicio('Plantilla Excel')">
+          <span class="q-icon">📊</span>
+          <p>Plantilla Excel</p>
+        </div>
+        <div class="quick-card" onclick="setServicio('Automatización con Macros VBA')">
+          <span class="q-icon">🤖</span>
+          <p>Macro / Automatización</p>
+        </div>
+        <div class="quick-card" onclick="setServicio('Archivo XML / Facturación')">
+          <span class="q-icon">🗂️</span>
+          <p>XML / Facturación</p>
+        </div>
+        <div class="quick-card" onclick="setServicio('Dashboard o Informe')">
+          <span class="q-icon">📈</span>
+          <p>Dashboard</p>
+        </div>
+        <div class="quick-card" onclick="setServicio('Consultoría personalizada')">
+          <span class="q-icon">🚀</span>
+          <p>Consultoría</p>
+        </div>
+        <div class="quick-card" onclick="setServicio('Otro servicio')">
+          <span class="q-icon">💬</span>
+          <p>Otro</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FORMULARIO + INFO -->
+  <section class="contact-section">
+    <div class="contact-inner">
+
+      <!-- INFO -->
+      <div class="contact-info">
+        <div class="info-card">
+          <div class="info-icon">📧</div>
+          <div class="info-text">
+            <h4>Email</h4>
+            <a href="mailto:contacto@milton-asoc.tech">contacto@milton-asoc.tech</a>
+          </div>
+        </div>
+        <div class="info-card">
+          <div class="info-icon">🌐</div>
+          <div class="info-text">
+            <h4>Sitio web</h4>
+            <a href="https://milton-asoc.tech">milton-asoc.tech</a>
+          </div>
+        </div>
+        <div class="info-card">
+          <div class="info-icon">🕐</div>
+          <div class="info-text">
+            <h4>Horario de atención</h4>
+            <p>Lunes a Viernes, 9:00 – 18:00</p><!-- REVISAR: confirma horario real -->
+          </div>
+        </div>
+        <div class="response-badge">
+          <div class="dot"></div>
+          <p><strong>Tiempo de respuesta:</strong> menos de 24 horas hábiles</p>
+        </div>
+      </div>
+
+      <!-- FORMULARIO -->
+      <div class="contact-form-wrap">
+        <h2>Envíanos un mensaje</h2>
+        <p class="form-desc">Completa el formulario y te contactaremos a la brevedad con una propuesta.</p>
+        <form id="contactForm" onsubmit="handleSubmit(event)">
+          <div class="form-row">
+            <div class="form-group">
+              <label for="nombre">Nombre *</label>
+              <input type="text" id="nombre" name="nombre" placeholder="Tu nombre" required />
+            </div>
+            <div class="form-group">
+              <label for="empresa">Empresa</label>
+              <input type="text" id="empresa" name="empresa" placeholder="Tu empresa" />
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="email">Email *</label>
+              <input type="email" id="email" name="email" placeholder="tu@email.com" required />
+            </div>
+            <div class="form-group">
+              <label for="telefono">Teléfono</label>
+              <input type="tel" id="telefono" name="telefono" placeholder="+52 55 0000 0000" />
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="servicio">Servicio de interés *</label>
+            <select id="servicio" name="servicio" required>
+              <option value="" disabled selected>Selecciona un servicio</option>
+              <option value="Plantilla Excel">Plantilla Excel</option>
+              <option value="Automatización con Macros VBA">Automatización con Macros VBA</option>
+              <option value="Archivo XML / Facturación">Archivo XML / Facturación</option>
+              <option value="Dashboard o Informe">Dashboard o Informe</option>
+              <option value="Consultoría personalizada">Consultoría personalizada</option>
+              <option value="Otro">Otro</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="mensaje">Cuéntanos tu proyecto *</label>
+            <textarea id="mensaje" name="mensaje" placeholder="Describe brevemente qué proceso quieres automatizar u optimizar..." required></textarea>
+          </div>
+          <button type="submit" class="btn-submit">
+            🚀 Enviar mensaje
+          </button>
+          <p class="form-note">Al enviar, aceptas que nos comuniquemos contigo para atender tu solicitud.</p>
+        </form>
+        <div id="formSuccess" style="display:none; text-align:center; padding:40px 0;">
+          <div style="font-size:56px; margin-bottom:16px;">✅</div>
+          <h3 style="font-size:22px; margin-bottom:10px;">¡Mensaje enviado!</h3>
+          <p style="color: var(--color-muted);">Nos pondremos en contacto contigo en menos de 24 horas hábiles.</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <img src="assets/logo.jpeg" alt="Milton & Asociados S.C. - Logo" />
+        <p>Soluciones profesionales en Excel, macros VBA y archivos XML.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Navegación</h4>
+        <ul>
+          <li><a href="index.html">Inicio</a></li>
+          <li><a href="servicios.html">Servicios</a></li>
+          <li><a href="nosotros.html">Nosotros</a></li>
+          <li><a href="contacto.html">Contacto</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Servicios</h4>
+        <ul>
+          <li><a href="servicios.html#plantillas">Plantillas Excel</a></li>
+          <li><a href="servicios.html#macros">Macros VBA</a></li>
+          <li><a href="servicios.html#xml">Archivos XML</a></li>
+          <li><a href="servicios.html#dashboards">Dashboards</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Contacto</h4>
+        <ul>
+          <li><a href="mailto:contacto@milton-asoc.tech">contacto@milton-asoc.tech</a></li>
+          <li><a href="https://milton-asoc.tech">milton-asoc.tech</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 Milton & Asociados S.C. — Todos los derechos reservados</p>
+      <a href="https://milton-asoc.tech" style="color: var(--color-muted); font-size: 13px;">milton-asoc.tech</a>
+    </div>
+  </footer>
+
+  <script>
+    const toggle = document.getElementById('menuToggle');
+    const nav = document.getElementById('siteNav');
+    toggle.addEventListener('click', () => nav.classList.toggle('open'));
+
+    function setServicio(val) {
+      const sel = document.getElementById('servicio');
+      sel.value = val;
+      document.getElementById('contactForm').scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }
+
+    function handleSubmit(e) {
+      e.preventDefault();
+      document.getElementById('contactForm').style.display = 'none';
+      document.getElementById('formSuccess').style.display = 'block';
+    }
+  </script>
+</body>
+</html>

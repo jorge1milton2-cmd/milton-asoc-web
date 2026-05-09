@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Servicios y Descargas | Milton & Asociados S.C.</title>
+  <meta name="description" content="Plantillas Excel profesionales, macros VBA, archivos XML para facturación y dashboards. Descarga gratis o solicita una solución a medida." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --color-primary: #00c8e0;
+      --color-primary-dim: #00c8e040;
+      --color-accent: #0080ff;
+      --color-dark: #060e1a;
+      --color-dark-2: #0d1b2a;
+      --color-dark-3: #0f2540;
+      --color-card: #0d1f38;
+      --color-border: #1a3a5c;
+      --color-text: #e8f4f8;
+      --color-muted: #7a9bb8;
+      --font: 'Space Grotesk', sans-serif;
+      --radius: 12px;
+      --transition: all 0.25s ease;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: var(--font); background: var(--color-dark); color: var(--color-text); }
+    a { color: var(--color-primary); text-decoration: none; transition: var(--transition); }
+    img { max-width: 100%; height: auto; display: block; }
+
+    /* HEADER */
+    .site-header { position: sticky; top: 0; z-index: 100; background: rgba(6,14,26,0.92); backdrop-filter: blur(12px); border-bottom: 1px solid var(--color-border); }
+    .header-inner { max-width: 1100px; margin: 0 auto; padding: 0 24px; height: 70px; display: flex; align-items: center; justify-content: space-between; gap: 24px; }
+    .site-logo img { height: 48px; width: auto; }
+    .site-nav { display: flex; align-items: center; gap: 8px; }
+    .site-nav a { color: var(--color-text); font-weight: 500; font-size: 15px; padding: 8px 14px; border-radius: 8px; }
+    .site-nav a:hover, .site-nav a.active { color: var(--color-primary); background: var(--color-primary-dim); }
+    .btn-nav { background: var(--color-primary) !important; color: var(--color-dark) !important; font-weight: 700 !important; border-radius: 8px !important; }
+    .btn-nav:hover { background: #00e5ff !important; }
+    .menu-toggle { display: none; background: none; border: none; cursor: pointer; padding: 8px; }
+    .menu-toggle span { display: block; width: 24px; height: 2px; background: var(--color-text); margin: 5px 0; }
+
+    /* PAGE HERO */
+    .page-hero {
+      padding: 80px 24px 64px;
+      text-align: center;
+      background: linear-gradient(180deg, var(--color-dark-3) 0%, var(--color-dark) 100%);
+      border-bottom: 1px solid var(--color-border);
+    }
+    .breadcrumb { font-size: 13px; color: var(--color-muted); margin-bottom: 20px; }
+    .breadcrumb a { color: var(--color-muted); }
+    .breadcrumb a:hover { color: var(--color-primary); }
+    .page-hero h1 { font-size: clamp(32px, 5vw, 52px); font-weight: 700; letter-spacing: -0.02em; margin-bottom: 16px; }
+    .page-hero h1 span { color: var(--color-primary); }
+    .page-hero p { font-size: 18px; color: var(--color-muted); max-width: 560px; margin: 0 auto; }
+
+    /* FILTROS */
+    .filters-section { padding: 40px 24px 0; }
+    .filters-inner { max-width: 1100px; margin: 0 auto; }
+    .filters { display: flex; gap: 12px; flex-wrap: wrap; }
+    .filter-btn {
+      padding: 8px 20px;
+      border-radius: 100px;
+      border: 1px solid var(--color-border);
+      background: transparent;
+      color: var(--color-muted);
+      font-family: var(--font);
+      font-size: 14px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: var(--transition);
+    }
+    .filter-btn:hover, .filter-btn.active {
+      border-color: var(--color-primary);
+      color: var(--color-primary);
+      background: var(--color-primary-dim);
+    }
+
+    /* GRID SERVICIOS */
+    .services-section { padding: 40px 24px 100px; }
+    .services-inner { max-width: 1100px; margin: 0 auto; }
+    .services-category { margin-bottom: 72px; }
+    .category-label {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 32px;
+    }
+    .category-label span {
+      font-size: 22px;
+      font-weight: 700;
+      color: var(--color-text);
+    }
+    .category-label::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--color-border);
+    }
+    .category-tag {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--color-primary);
+      background: var(--color-primary-dim);
+      border: 1px solid var(--color-primary);
+      padding: 3px 10px;
+      border-radius: 100px;
+    }
+    .items-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 20px;
+    }
+    .item-card {
+      background: var(--color-card);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius);
+      padding: 28px;
+      transition: var(--transition);
+      display: flex;
+      flex-direction: column;
+    }
+    .item-card:hover { border-color: var(--color-primary); transform: translateY(-4px); box-shadow: 0 12px 32px #00c8e015; }
+    .item-type {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 3px 10px;
+      border-radius: 100px;
+      display: inline-block;
+      margin-bottom: 16px;
+      width: fit-content;
+    }
+    .type-excel { background: #1d6b3a; color: #4ade80; border: 1px solid #4ade8040; }
+    .type-xml { background: #6b3a1d; color: #fb923c; border: 1px solid #fb923c40; }
+    .type-macro { background: #1d3a6b; color: #60a5fa; border: 1px solid #60a5fa40; }
+    .type-dashboard { background: #3a1d6b; color: #a78bfa; border: 1px solid #a78bfa40; }
+    .item-card h3 { font-size: 17px; font-weight: 600; margin-bottom: 10px; color: var(--color-text); }
+    .item-card p { color: var(--color-muted); font-size: 14px; line-height: 1.7; flex: 1; margin-bottom: 20px; }
+    .item-footer { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+    .item-tag { font-size: 12px; color: var(--color-muted); background: var(--color-dark-2); padding: 4px 10px; border-radius: 6px; }
+    .btn-download {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: var(--color-primary);
+      color: var(--color-dark);
+      font-weight: 700;
+      font-size: 13px;
+      padding: 8px 16px;
+      border-radius: 8px;
+      white-space: nowrap;
+      transition: var(--transition);
+    }
+    .btn-download:hover { background: #00e5ff; color: var(--color-dark); }
+    .btn-solicitar {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: transparent;
+      border: 1px solid var(--color-border);
+      color: var(--color-muted);
+      font-weight: 600;
+      font-size: 13px;
+      padding: 8px 16px;
+      border-radius: 8px;
+      white-space: nowrap;
+      transition: var(--transition);
+    }
+    .btn-solicitar:hover { border-color: var(--color-primary); color: var(--color-primary); }
+
+    /* CTA CONSULTORÍA */
+    .consultoria-cta {
+      background: linear-gradient(135deg, var(--color-dark-3), var(--color-dark-2));
+      border: 1px solid var(--color-border);
+      border-radius: 16px;
+      padding: 48px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 32px;
+      flex-wrap: wrap;
+      margin-top: 40px;
+    }
+    .consultoria-cta h2 { font-size: 28px; font-weight: 700; margin-bottom: 10px; }
+    .consultoria-cta p { color: var(--color-muted); max-width: 480px; }
+    .btn-primary { display: inline-flex; align-items: center; gap: 8px; background: var(--color-primary); color: var(--color-dark); font-weight: 700; font-size: 16px; padding: 14px 32px; border-radius: var(--radius); transition: var(--transition); }
+    .btn-primary:hover { background: #00e5ff; transform: translateY(-2px); }
+
+    /* FOOTER */
+    .site-footer { background: var(--color-dark-2); border-top: 1px solid var(--color-border); padding: 60px 24px 32px; }
+    .footer-inner { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 40px; }
+    .footer-brand img { height: 48px; margin-bottom: 16px; }
+    .footer-brand p { color: var(--color-muted); font-size: 14px; line-height: 1.7; }
+    .footer-col h4 { color: var(--color-text); font-size: 14px; font-weight: 600; letter-spacing: 0.05em; text-transform: uppercase; margin-bottom: 16px; }
+    .footer-col ul { list-style: none; }
+    .footer-col ul li { margin-bottom: 10px; }
+    .footer-col ul li a { color: var(--color-muted); font-size: 14px; }
+    .footer-col ul li a:hover { color: var(--color-primary); }
+    .footer-bottom { max-width: 1100px; margin: 40px auto 0; padding-top: 24px; border-top: 1px solid var(--color-border); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; }
+    .footer-bottom p { color: var(--color-muted); font-size: 13px; }
+
+    @media (max-width: 768px) {
+      .menu-toggle { display: block; }
+      .site-nav { display: none; flex-direction: column; position: absolute; top: 70px; left: 0; right: 0; background: var(--color-dark); padding: 20px 24px; border-bottom: 1px solid var(--color-border); gap: 4px; }
+      .site-nav.open { display: flex; }
+      .consultoria-cta { flex-direction: column; text-align: center; padding: 32px 24px; }
+      .footer-inner { grid-template-columns: 1fr 1fr; }
+      .footer-brand { grid-column: 1 / -1; }
+    }
+    @media (max-width: 480px) {
+      .footer-inner { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="header-inner">
+      <div class="site-logo"><a href="index.html"><img src="assets/logo.jpeg" alt="Milton & Asociados S.C." /></a></div>
+      <button class="menu-toggle" id="menuToggle" aria-label="Menú"><span></span><span></span><span></span></button>
+      <nav class="site-nav" id="siteNav">
+        <a href="index.html">Inicio</a>
+        <a href="servicios.html" class="active">Servicios</a>
+        <a href="nosotros.html">Nosotros</a>
+        <a href="contacto.html">Contacto</a>
+        <a href="contacto.html" class="btn-nav">Solicitar a medida</a>
+      </nav>
+    </div>
+  </header>
+
+  <div class="page-hero">
+    <div class="breadcrumb"><a href="index.html">Inicio</a> / Servicios</div>
+    <h1>Plantillas, <span>Automatizaciones</span> y XML</h1>
+    <p>Todo lo que necesitas para optimizar los procesos de tu empresa con Excel.</p>
+  </div>
+
+  <div class="filters-section">
+    <div class="filters-inner">
+      <div class="filters">
+        <button class="filter-btn active">Todos</button>
+        <button class="filter-btn">📊 Excel</button>
+        <button class="filter-btn">🤖 Macros VBA</button>
+        <button class="filter-btn">🗂️ XML</button>
+        <button class="filter-btn">📈 Dashboards</button>
+      </div>
+    </div>
+  </div>
+
+  <section class="services-section">
+    <div class="services-inner">
+
+      <!-- PLANTILLAS EXCEL -->
+      <div class="services-category" id="plantillas">
+        <div class="category-label">
+          <span class="category-tag">Excel</span>
+          <span>Plantillas Excel Profesionales</span>
+        </div>
+        <div class="items-grid">
+          <div class="item-card">
+            <span class="item-type type-excel">📊 Excel</span>
+            <h3>Control de Inventario Avanzado</h3>
+            <p>Gestiona entradas, salidas, stock mínimo, alertas automáticas y valoración de inventario. Incluye gráficas de tendencia.</p>
+            <div class="item-footer">
+              <span class="item-tag">Excel 2016+</span>
+              <a href="contacto.html" class="btn-download">⬇ Descargar</a>
+            </div>
+          </div>
+          <div class="item-card">
+            <span class="item-type type-excel">📊 Excel</span>
+            <h3>Nómina y Cálculo de Salarios</h3>
+            <p>Calcula salarios, deducciones, IMSS, INFONAVIT y genera recibos de nómina listos para imprimir por cada empleado.</p>
+            <div class="item-footer">
+              <span class="item-tag">Excel 2016+</span>
+              <a href="contacto.html" class="btn-download">⬇ Descargar</a>
+            </div>
+          </div>
+          <div class="item-card">
+            <span class="item-type type-excel">📊 Excel</span>
+            <h3>Presupuesto y Control de Gastos</h3>
+            <p>Planifica ingresos y gastos mensuales, compara presupuestado vs real y visualiza desviaciones automáticamente.</p>
+            <div class="item-footer">
+              <span class="item-tag">Excel 2013+</span>
+              <a href="contacto.html" class="btn-download">⬇ Descargar</a>
+            </div>
+          </div>
+          <div class="item-card">
+            <span class="item-type type-excel">📊 Excel</span>
+            <h3>Flujo de Caja Proyectado</h3>
+            <p>Proyecta tu flujo de efectivo a 12 meses. Identifica períodos críticos y planifica con anticipación.</p>
+            <div class="item-footer">
+              <span class="item-tag">Excel 2016+</span>
+              <a href="contacto.html" class="btn-download">⬇ Descargar</a>
+            </div>
+          </div>
+          <div class="item-card">
+            <span class="item-type type-excel">📊 Excel</span>
+            <h3>Cotizador de Ventas Automático</h3>
+            <p>Genera cotizaciones profesionales en segundos. Incluye catálogo de productos, cálculo de IVA y exportación a PDF.</p>
+            <div class="item-footer">
+              <span class="item-tag">Excel 2019+</span>
+              <a href="contacto.html" class="btn-download">⬇ Descargar</a>
+            </div>
+          </div>
+          <div class="item-card">
+            <span class="item-type type-excel">📊 Excel</span>
+            <h3>Control de Cuentas por Cobrar</h3>
+            <p>Registra facturas emitidas, fechas de vencimiento, pagos parciales y genera reportes de cartera vencida.</p>
+            <div class="item-footer">
+              <span class="item-tag">Excel 2016+</span>
+              <a href="contacto.html" class="btn-download">⬇ Descargar</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- MACROS VBA -->
+      <div class="services-category" id="macros">
+        <div class="category-label">
+          <span class="category-tag">Macros VBA</span>
+          <span>Automatizaciones con Macros VBA</span>
+        </div>
+        <div class="items-grid">
+          <div class="item-card">
+            <span class="item-type type-macro">🤖 Macro</span>
+            <h3>Generador de Reportes Automático</h3>
+            <p>Con un solo clic, consolida datos de múltiples hojas, aplica formatos y genera el reporte final listo para presentar.</p>
+            <div class="item-footer">
+              <span class="item-tag">.xlsm</span>
+              <a href="contacto.html" class="btn-download">⬇ Descargar</a>
+            </div>
+          </div>
+          <div class="item-card">
+            <span class="item-type type-macro">🤖 Macro</span>
+            <h3>Envío Masivo de Correos desde Excel</h3>
+            <p>Envía emails personalizados a listas de contactos directamente desde Excel usando Outlook. Ideal para notificaciones y cobranza.</p>
+            <div class="item-footer">
+              <span class="item-tag">.xlsm</span>
+              <a href="contacto.html" class="btn-download">⬇ Descargar</a>
+            </div>
+          </div>
+          <div class="item-card">
+            <span class="item-type type-macro">🤖 Macro</span>
+            <h3>Importador de Datos desde CSV/TXT</h3>
+            <p>Automatiza la importación y limpieza de datos desde archivos externos. Elimina duplicados y formatea automáticamente.</p>
+            <div class="item-footer">
+              <span class="item-tag">.xlsm</span>
+              <a href="contacto.html" class="btn-download">⬇ Descargar</a>
+            </div>
+          </div>
+          <div class="item-card">
+            <span class="item-type type-macro">🤖 Macro</span>
+            <h3>Generador de PDF por Registro</h3>
+            <p>Convierte automáticamente cada fila de tu base de datos en un PDF independiente (facturas, contratos, reportes individuales).</p>
+            <div class="item-footer">
+              <span class="item-tag">.xlsm</span>
+              <a href="contacto.html" class="btn-download">⬇ Descargar</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ARCHIVOS XML -->
+      <div class="services-category" id="xml">
+        <div class="category-label">
+          <span class="category-tag">XML</span>
+          <span>Archivos XML para Facturación</span>
+        </div>
+        <div class="items-grid">
+          <div class="item-card">
+            <span class="item-type type-xml">🗂️ XML</span>
+            <h3>Generador de XML CFDI 4.0</h3>
+            <p>Genera archivos XML para facturación electrónica conforme al estándar CFDI 4.0. Incluye validación de campos obligatorios.</p>
+            <div class="item-footer">
+              <span class="item-tag">CFDI 4.0</span>
+              <a href="contacto.html" class="btn-solicitar">Solicitar</a>
+            </div>
+          </div>
+          <div class="item-card">
+            <span class="item-type type-xml">🗂️ XML</span>
+            <h3>Lector y Validador de XML</h3>
+            <p>Importa, lee y valida la estructura de archivos XML. Extrae datos y los vuelca automáticamente a hojas de Excel para análisis.</p>
+            <div class="item-footer">
+              <span class="item-tag">.xlsm + XML</span>
+              <a href="contacto.html" class="btn-download">⬇ Descargar</a>
+            </div>
+          </div>
+          <div class="item-card">
+            <span class="item-type type-xml">🗂️ XML</span>
+            <h3>Conciliador de XML vs Contabilidad</h3>
+            <p>Compara tus XMLs de facturas recibidas y emitidas contra tu contabilidad. Detecta diferencias y genera reportes de conciliación.</p>
+            <div class="item-footer">
+              <span class="item-tag">Excel + XML</span>
+              <a href="contacto.html" class="btn-solicitar">Solicitar</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- DASHBOARDS -->
+      <div class="services-category" id="dashboards">
+        <div class="category-label">
+          <span class="category-tag">Dashboards</span>
+          <span>Dashboards e Informes Interactivos</span>
+        </div>
+        <div class="items-grid">
+          <div class="item-card">
+            <span class="item-type type-dashboard">📈 Dashboard</span>
+            <h3>Dashboard de Ventas Ejecutivo</h3>
+            <p>Visualiza KPIs de ventas, comparativas mensuales, top productos y top vendedores con gráficas dinámicas y filtros interactivos.</p>
+            <div class="item-footer">
+              <span class="item-tag">Excel 2019+</span>
+              <a href="contacto.html" class="btn-download">⬇ Descargar</a>
+            </div>
+          </div>
+          <div class="item-card">
+            <span class="item-type type-dashboard">📈 Dashboard</span>
+            <h3>Dashboard Financiero Gerencial</h3>
+            <p>Concentra ingresos, egresos, utilidad bruta y neta, EBITDA y ratios financieros en un solo panel de control.</p>
+            <div class="item-footer">
+              <span class="item-tag">Excel 2019+</span>
+              <a href="contacto.html" class="btn-download">⬇ Descargar</a>
+            </div>
+          </div>
+          <div class="item-card">
+            <span class="item-type type-dashboard">📈 Dashboard</span>
+            <h3>Dashboard de RRHH y Productividad</h3>
+            <p>Controla asistencias, productividad por empleado, vacaciones, cumpleaños y evolución salarial en un solo lugar.</p>
+            <div class="item-footer">
+              <span class="item-tag">Excel 2016+</span>
+              <a href="contacto.html" class="btn-solicitar">Solicitar</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- CTA CONSULTORÍA -->
+      <div class="consultoria-cta">
+        <div>
+          <h2>¿No encuentras lo que necesitas?</h2>
+          <p>Diseñamos soluciones a medida para tu empresa. Cuéntanos tu proceso y te construimos exactamente lo que necesitas.</p>
+        </div>
+        <a href="contacto.html" class="btn-primary">🚀 Solicitar solución personalizada</a>
+      </div>
+
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <img src="assets/logo.jpeg" alt="Milton & Asociados S.C. - Logo" />
+        <p>Soluciones profesionales en Excel, macros VBA y archivos XML.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Navegación</h4>
+        <ul>
+          <li><a href="index.html">Inicio</a></li>
+          <li><a href="servicios.html">Servicios</a></li>
+          <li><a href="nosotros.html">Nosotros</a></li>
+          <li><a href="contacto.html">Contacto</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Servicios</h4>
+        <ul>
+          <li><a href="#plantillas">Plantillas Excel</a></li>
+          <li><a href="#macros">Macros VBA</a></li>
+          <li><a href="#xml">Archivos XML</a></li>
+          <li><a href="#dashboards">Dashboards</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Contacto</h4>
+        <ul>
+          <li><a href="mailto:contacto@milton-asoc.tech">contacto@milton-asoc.tech</a></li>
+          <li><a href="contacto.html">Formulario</a></li>
+          <li><a href="https://milton-asoc.tech">milton-asoc.tech</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 Milton & Asociados S.C. — Todos los derechos reservados</p>
+      <a href="https://milton-asoc.tech" style="color: var(--color-muted); font-size: 13px;">milton-asoc.tech</a>
+    </div>
+  </footer>
+
+  <script>
+    const toggle = document.getElementById('menuToggle');
+    const nav = document.getElementById('siteNav');
+    toggle.addEventListener('click', () => nav.classList.toggle('open'));
+
+    // Filtros simples (UI only por ahora)
+    document.querySelectorAll('.filter-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+      });
+    });
+  </script>
+</body>
+</html>
