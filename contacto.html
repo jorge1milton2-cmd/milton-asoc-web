@@ -8,6 +8,15 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
 })(window,document,'script','dataLayer','GTM-WCKTKFZS');</script>
 <!-- End Google Tag Manager -->
+<!-- Google Analytics 4 -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-RP1VB70DBZ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-RP1VB70DBZ');
+</script>
+<!-- End Google Analytics 4 -->
 <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Contacto | Milton & Asociados S.C. — Auditoría en Cusco, Perú</title>
@@ -499,7 +508,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         if (res.ok && (data.success === true || data.success === 'true')) {
           form.style.display = 'none';
           document.getElementById('formSuccess').style.display = 'block';
-          dataLayer.push({ event: 'form_enviado', servicio: (new FormData(form).get('servicio') || '') });
+          gtag('event', 'form_enviado', { servicio: (new FormData(form).get('servicio') || '') });
         } else {
           throw new Error(data.message || 'Error al enviar');
         }
@@ -530,9 +539,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     if (!a) return;
     var href = a.getAttribute('href') || '';
     if (href.indexOf('wa.me') > -1) {
-      dataLayer.push({ event: 'click_whatsapp', link_url: href, link_text: (a.textContent || '').trim().slice(0, 60) });
+      gtag('event', 'click_whatsapp', { link_url: href, link_text: (a.textContent || '').trim().slice(0, 60) });
     } else if (a.hasAttribute('download')) {
-      dataLayer.push({ event: 'descarga_archivo', file_url: href });
+      gtag('event', 'descarga_archivo', { file_url: href });
     }
   });
 </script>
