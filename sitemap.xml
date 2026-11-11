@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>https://milton-asoc.tech/index.html</loc>
+    <lastmod>2026-11-10</lastmod>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://milton-asoc.tech/servicios.html</loc>
+    <lastmod>2026-11-10</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://milton-asoc.tech/descargas.html</loc>
+    <lastmod>2026-11-10</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://milton-asoc.tech/plame-excel.html</loc>
+    <lastmod>2026-11-10</lastmod>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://milton-asoc.tech/nosotros.html</loc>
+    <lastmod>2026-11-10</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://milton-asoc.tech/contacto.html</loc>
+    <lastmod>2026-11-10</lastmod>
+    <priority>0.7</priority>
+  </url>
+</urlset>
